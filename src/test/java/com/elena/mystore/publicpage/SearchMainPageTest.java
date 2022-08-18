@@ -16,7 +16,7 @@ public class SearchMainPageTest extends BaseTest {
         softVerify("Result in paginator isn't found for search query",
                 () -> catalogPage.isSearchHasResultsInPaginator(), is(true));
         softVerify("Result isn't found for search query",
-                () -> catalogPage.isSearchHasResults(), is(false));
+                () -> catalogPage.isSearchHasResults(), is(true));
         softVerify("Search results aren't match",
                 () -> catalogPage.isSearchHasResults(), is(catalogPage.isSearchHasResultsInPaginator()));
     }
