@@ -1,9 +1,9 @@
 package com.elena.mystore.pageobject.page;
 
+import com.elena.mystore.core.logger.Logger;
 import com.elena.mystore.exception.ProductBugException;
 import com.elena.mystore.util.DriverUtil;
 import com.elena.mystore.util.RegexUtil;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CatalogPage extends AbstractStorePage {
 
-    private final Logger LOGGER = getLOGGER();
+    private static final Logger LOGGER = new Logger(CatalogPage.class);
 
     @FindBy(xpath = "//div[./div[@id='pagination']]//div[@class='product-count']")
     private WebElement itemsPaginatorCount;
@@ -31,7 +31,8 @@ public class CatalogPage extends AbstractStorePage {
     public int getItemsCountInPaginator() {
         try {
             String strItemsAmount = itemsPaginatorCount.getText();
-            LOGGER.info("Amount of items in paginator are " + RegexUtil.getFirstGroupByRegex(strItemsAmount, "of (\\d*)"));
+            LOGGER.info("Amount of items in paginator are " + RegexUtil.getFirstGroupByRegex(strItemsAmount,
+                    "of (\\d*)"));
             return Integer.parseInt(RegexUtil.getFirstGroupByRegex(strItemsAmount, "of (\\d*)"));
         } catch (NoSuchElementException e) {
             throw new ProductBugException("Amount of items in paginator wasn't found", e);
@@ -49,7 +50,8 @@ public class CatalogPage extends AbstractStorePage {
 
     public boolean isIncorrectSearchResultPresent() {
         LOGGER.info("Verify is incorrect search result present");
-        return DriverUtil.isElementPresent(driver, By.xpath("//p[contains(text(), 'No results')]"), 3);
+        return DriverUtil.isElementPresent(driver, By.xpath("//p[contains(text(), 'No results')]"),
+                3);
     }
 
     public boolean isSearchHasResultsInPaginator() {

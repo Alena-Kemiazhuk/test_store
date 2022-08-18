@@ -3,6 +3,7 @@
 <suite name="All tests">
     <listeners>
         <listener class-name="com.elena.mystore.listener.SoftAssertionListener"/>
+        <listener class-name="com.elena.mystore.listener.TestListener"/>
     </listeners>
 
     <test name="My store - all tests">

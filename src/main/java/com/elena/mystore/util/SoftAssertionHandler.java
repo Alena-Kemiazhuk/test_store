@@ -25,7 +25,7 @@ public class SoftAssertionHandler {
             assertThat(message, webElement.get(), matcher);
         } catch (AssertionError e) {
             addVerificationFailure(e);
-            ScreenshotUtil.getScreenshot();
+            ScreenshotUtil.getScreenshot(ScreenshotUtil.getUniqueNameForScreenshot());
         }
     }
 

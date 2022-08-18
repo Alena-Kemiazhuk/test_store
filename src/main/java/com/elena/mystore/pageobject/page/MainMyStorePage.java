@@ -1,12 +1,12 @@
 package com.elena.mystore.pageobject.page;
 
-import org.apache.logging.log4j.Logger;
+import com.elena.mystore.core.logger.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MainMyStorePage extends AbstractStorePage {
 
-    private final Logger logger = getLOGGER();
+    private static final Logger LOGGER = new Logger(CatalogPage.class);
 
     @FindBy(xpath = "//input[@id='search_query_top']")
     private WebElement searchInput;
@@ -19,14 +19,14 @@ public class MainMyStorePage extends AbstractStorePage {
     }
 
     public CatalogPage search(String searchText) {
-        logger.info("Search for " + searchText);
+        LOGGER.info("Search for " + searchText);
         enterSearchText(searchText);
         clickSearch();
         return new CatalogPage();
     }
 
     public void enterSearchText(String searchText) {
-        logger.info("Enter search text: " + searchText);
+        LOGGER.info("Enter search text: " + searchText);
         searchInput.sendKeys(searchText);
     }
 

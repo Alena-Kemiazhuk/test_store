@@ -129,6 +129,11 @@
             <artifactId>owner</artifactId>
             <version>${owner.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.13.5</version>
+        </dependency>
     </dependencies>
 
     <build>
