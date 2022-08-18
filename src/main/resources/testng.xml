@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="All tests">
+    <listeners>
+        <listener class-name="com.elena.mystore.listener.SoftAssertionListener"/>
+    </listeners>
+
+    <test name="My store - all tests">
+        <packages>
+            <package name="com.elena.mystore.publicpage.*"/>
+        </packages>
+    </test>
+</suite>
